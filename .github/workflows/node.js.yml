@@ -28,7 +28,7 @@ jobs:
         # --delete: delete extraneous files from dest dirs
         switches: -vzr --delete
         path: src/
-        remote_path: /var/www/html/
+        remote_path: /var/www/larryyoung.dev
         remote_host: 34.125.50.127
         remote_user: github
         remote_key: ${{ secrets.DEPLOY_KEY }}
