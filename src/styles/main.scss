@@ -685,7 +685,7 @@ body {
   }
 }
 
-@media screen and (min-width: 861px) and (max-width: 1500px) {
+@media screen and (min-width: 861px) and (max-width: 1900px) {
   #navbar {
     display: none;
   } 
@@ -829,7 +829,7 @@ body {
 
   #resume-container {
     display: flex;
-    width: 80%;
+    width: 100%;
     opacity: 1;
     margin-left: 5%;
   }

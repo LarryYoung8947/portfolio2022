@@ -81,7 +81,7 @@ const titleLoader = (projectTitles) => {
 }
 
 const iconTitleLoader = () => {
-  let iconTitles = ['GitHub', 'CodePen', 'Bitbucket', 'VanillaJS', 'React', 'NodeJS', 'Animation', 'API']
+  let iconTitles = ['GitHub', 'Bitbucket', 'VanillaJS', 'React', 'SQL/Databases', 'API/Backend', 'Full Stack']
   console.log('icon title loader here...')
   const icons = document.querySelectorAll('.flipBtn');
   let iconIndex = 0;

@@ -13,6 +13,9 @@ let fadeInPortfolio = () => {
     console.log('portfolio working...');
     welcomeSection.style.opacity = '0';
     resume.style.opacity = '0';
+    projects.style.zIndex = '0';
+    resume.style.zIndex = '-1000';
+    contactSect.style.zIndex = '-1000';
     contactSect.style.opacity = '0';
     animationBox.style.opacity = '0.3';
     artBoard.style.opacity = '0';
@@ -32,6 +35,9 @@ let fadeInPortfolio = () => {
     projects.style.opacity = '0'; 
     contactSect.style.opacity = '0';
     resume.style.display = 'flex';
+    resume.style.zIndex = '0';
+    projects.style.zIndex = '-1000';
+    contactSect.style.zIndex = '-1000';
     resume.style.width = window.innerWidth;
     resume.style.height = window.innerHeight;
     let canvas = document.getElementById('pdfViewport');    
@@ -49,6 +55,9 @@ let fadeInPortfolio = () => {
     animationBox.style.opacity = '0.3';
     artBoard.style.opacity = '0'; 
     projects.style.opacity = '0'; 
+    resume.style.zIndex = '-1000';
+    projects.style.zIndex = '-1000';
+    contactSect.style.zIndex = '0';
     contactSect.style.display = 'flex';
     setTimeout(() => {
         contactSect.style.opacity = '1';

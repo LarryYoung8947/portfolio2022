@@ -43,7 +43,7 @@ export const Resume = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [visible, setVisible] = useState(4);
 
-  window.addEventListener("resize", setWidth);
+  
 
   //CURRENTLY TRACKING WINDOW WIDTH WITH HOOKS IN CONSOLE LOG
   //DONT FORGET TO WRITE RESIZING OBJECTS WITH TERNARY EXPRESSIONS --- EXAMPLE BELOW
@@ -75,7 +75,9 @@ export const Resume = () => {
     } else {
       console.log('nothing to remove...');
     }
-    window.addEventListener("resize", setWidth(window.innerWidth))
+    window.addEventListener("resize", () => {
+      setWidth(window.innerWidth);
+    })
   }) 
 
 
@@ -88,10 +90,6 @@ export const Resume = () => {
   
     
   }
-  
-  
-  
-  
   
   const imgArr = [];
   let clickedLink;
@@ -116,9 +114,8 @@ export const Resume = () => {
     flexWrap: 'wrap',
     height: '73%',
     border: 'solid #424548 1px',
-    position: 'relative',
+    position: 'aosbolute',
     top: '10%',
-    width: '75%',
     marginLeft: '5%',
   }
   
@@ -172,7 +169,7 @@ export const Resume = () => {
 
   // render() {
     return (
-      <div id='resumeBox' style={resumeStyle}>
+      <div id='resumeBox' style={{resumeStyle, "width": width/4*2.5}}>
         <p id='resumeInfoBox' style={resumeInfoBox}>Choose an Option on the Left</p>
         <div id="resOptionsBox" style={resOptionsStyle}>
           <p id="profileLink" onMouseOver={hoverPointer} onClick={() => setVisible(0)}>Profile</p>
