@@ -1,4 +1,8 @@
 import './styles/main.scss';
+import './styles/welcome.scss';
+import './styles/resume.scss'
+import './styles/portfolio.scss';
+import './styles/contact.scss';
 import startAnimating from './js/animate';
 import Resume from './js/Resume.jsx';
 //MASTER CONTROLLERS IMPORTS

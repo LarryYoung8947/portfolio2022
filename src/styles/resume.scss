@@ -1,0 +1,162 @@
+#resume {
+    transition: opacity 2s;
+  }
+  
+  #pdfMenuBar {
+    display: none;
+  }
+  
+  @media screen and (max-width: "600px") {
+    #resume-container {
+        display: none;
+        opacity: 0;
+        height: 471px;
+        width: 94%;
+        position: absolute;
+        top: 107px;
+        transition: opacity 2s;
+      }
+
+      #pdfDownloadBox p {
+        display: flex;
+        font-family: "Raleway";
+        align-items: center;
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        color: #939597;
+      }  
+    
+      #pdfViewport {
+        display: none;
+        height: 73%;
+        border: solid #939597 1px;
+        position: absolute;
+        top: 10%;
+        width: 60%;
+      }
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 860px) {
+    #resume-container {
+        display: none;
+        opacity: 0;
+        height: 528px;
+        width: 94%;
+        position: absolute;
+        top: 55px;
+        transition: opacity 2s;
+      }  
+
+      #pdfDownloadBox p {
+        display: flex;
+        font-family: "Raleway";
+        align-items: center;
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        color: #939597;
+      }  
+  
+      #pdfViewport {
+        display: none;
+      height: 73%;
+      border: solid #939597 1px;
+      position: absolute;
+      top: 10%;
+      width: 60%;
+      margin-left: 5%;
+      }
+  }
+
+  @media screen and (min-width: 861px) and (max-width: 1900px) {
+    #resume-container {
+        display: none;
+        opacity: 0;
+        height: 528px;
+        width: 94%;
+        position: absolute;
+        top: 55px;
+        transition: opacity 2s;
+      }     
+
+      #pdfMenuBar {
+        position: fixed;
+        height: 75px;
+        width: 100%;
+        background-color:#24292d;
+        opacity: 0;
+        z-index: 2000;
+      }
+    
+      #prevPageBtn{
+        position: fixed;
+        height: 65px;
+        width: 125px;
+        background-color:#939597;
+        z-index: 2000;
+        opacity: 0.5;
+        color:#939597;
+        font-size: 1.5em;
+        font-family: "Raleway";
+        top: 5px;
+        left: 5px;
+      }
+    
+      #nextPageBtn {
+        position: fixed;
+        height: 65px;
+        width: 125px;
+        right: 15px;
+        background-color: #939597;
+        z-index: 2000;
+        opacity: 0.5;
+        color:#939597;
+        font-size: 1.5em;
+        top: 5px;
+        right: 5px;
+      }
+    
+      #close {
+        position: fixed;
+        height: 65px;
+        width: 125px;
+        right: 15px;
+        background-color: #24292d;
+        z-index: 2000;
+        opacity: 0;
+        color:#939597;
+        top: 529px;
+        font-family: "Raleway";
+        font-size: 1.7em;
+        letter-spacing: 3px;
+        right: 43px;
+        border: hidden;
+      }
+    
+      #downloadPDF {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 50px;
+      }
+    
+     
+      #pdfDownloadBox p {
+        display: flex;
+        font-family: "Raleway";
+        align-items: center;
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        color: #939597;
+      } 
+    
+      #pdfViewport {
+      display: none;
+      border: 1px solid #424548;
+      position: absolute;
+      background-color: #24292d;
+      z-index: 1000;
+      overflow: auto;
+      }
+    
+      
+  }

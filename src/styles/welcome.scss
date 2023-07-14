@@ -1,0 +1,95 @@
+#name {
+    margin: 10px;
+  }
+
+  
+
+  
+
+  @media screen and (max-width: 600px) {
+    //WELCOME SECTION
+
+    #welcomeSection {
+      display: none;
+      position: absolute;
+      height: 200px;
+      margin-left: 10%;
+      top: 38%;
+      color: #939597;
+      font-family: "Raleway";
+      font-size: 2em;
+      opacity: 0;
+      transition: opacity 1.5s;
+      width: 90%;
+      overflow-x: hidden;
+    }
+
+  .introTitle {
+    font-family: "Raleway", sans-serif;
+    color: #757677;
+    font-size: 1em;
+    letter-spacing: 10px;
+    line-height: 70px;
+    font-weight: 700;
+    text-align: center;
+  }
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 860px) {
+
+    #welcomeSection {
+      display: none;
+      position: absolute;
+      height: 200px;
+      margin-left: 16%;
+      top: 38%;
+      color: #939597;
+      font-family: "Raleway";
+      font-size: 2.5em;
+      opacity: 0;
+      transition: opacity 1.5s;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .introTitle {
+      font-family: "Raleway", sans-serif;
+      color: #939597;
+      height:35%;
+      font-size: 1.3em;
+      font-weight: 700;
+      margin: 5px;
+      width: 50%;
+    }
+
+    #professionTitle {
+      width: 40%;
+      font-size: 2rem;
+      padding: 0 0 0 5%;
+      margin: 0;
+    }
+  }
+
+  @media screen and (min-width: 861px) and (max-width: 1900px) {
+    #welcomeSection {
+      display: none;
+      position: absolute;
+      height: 200px;
+      margin-left: 26%;
+      top: 38%;
+      color: #939597;
+      font-family: "Raleway";
+      font-size: 2.5em;
+      opacity: 0;
+      transition: opacity 1.5s;
+    }
+
+    #professionTitle {
+      width: 75%;
+      font-size: 2rem;
+      padding: 0 0 0 15%;
+      margin: 0;
+    }
+  }
+
+  
