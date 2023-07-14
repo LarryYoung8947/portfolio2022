@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import getPDF from '../controllers/pdfController';
 import downloadFile from './pdfDownloader';
-
+import styled from 'styled-components'
 //CURRENTLY CONVERTING TO FUNCTION COMPONENT
 
 //CLASS COMPONENT SYNTAX -------- LEGACY MODEL
@@ -33,15 +33,21 @@ export const Resume = () => {
   } */
 
   const infoArr = [
-    "3 years experience. Passionate about working with UX/UI, API, and databases.",
+    
     "Built multiple projects including basic game applications, applications that interact with a server, manage data and show UX/UI skills. See Portfolio",
-     "State Fair Community College (in progress) - Team Treehouse - CodeAcademy - freeCodeCamp - Udemy",
-     "JavaScript(ES2015)/HTML5/CSS3(SASS, Keyframes, Bootstrap) - UX/UI Design - Advanced Problem Solving - Animation - React - Webpack,, Python, SQL, Git, Node.js, JQuery, Experience in Computer Repair",
-     "Click a link to the left"
+    "JavaScript(ES2015)/HTML5/CSS3(SASS, Keyframes, Bootstrap) - UX/UI Design - Advanced Problem Solving - Animation - React - Webpack,, Python, SQL, Git, Node.js, JQuery, Experience in Computer Repair",
+    "3 years experience. Passionate about working with UX/UI, API, and databases.", 
+    "State Fair Community College (in progress) - Team Treehouse - CodeAcademy - freeCodeCamp - Udemy",     
+     "Click an option to the left",
+     "Click an option above"
   ];
 
+  const navBar = document.getElementById('navBar')
+  const vertNav = document.getElementById('vertNav')
+
   const [width, setWidth] = useState(window.innerWidth);
-  const [visible, setVisible] = useState(4);
+  const [visible, setVisible] = useState(window.innerWidth <= 600 ? 5 : 4);
+  const [navMenuType, setNavMenuType] = useState(window.innerWidth <= 600 ? 'navBar' : 'verNav')
 
   
 
@@ -63,21 +69,19 @@ export const Resume = () => {
      </>
   ) */
 
+  let text;
+
   useEffect(() => {
     console.log({visible})
     console.log({width})
     console.log(infoArr[visible]);
-    let resumeInfoBox = document.getElementById('resumeInfoBox');
-    let text = document.createTextNode(infoArr[visible]);
-    resumeInfoBox.appendChild(text);
-    if (resumeInfoBox.childNodes.length === 2 ) {
-        resumeInfoBox.removeChild(resumeInfoBox.childNodes[0]);
-    } else {
-      console.log('nothing to remove...');
-    }
+    //insert resInfo function
     window.addEventListener("resize", () => {
       setWidth(window.innerWidth);
+      setVisible(width <= 600 ? 5 : 4 )
+      setNavMenuType(width <= 600 ? vertNav.style.opacity = 0 : vertNav.style.opacity = 1) 
     })
+
   }) 
 
 
@@ -91,93 +95,114 @@ export const Resume = () => {
     
   }
   
+  
   const imgArr = [];
   let clickedLink;
   let currentDiv;
   let activeResID;
-  
-  
-  
-  
-  const arrowPos = {
-    position: 'relative',
-    left: '80px',
-    color: '#424548',
-    fontSize: '2em',
-    margin: '0',
-    zIndex: '5'
-  }
-  
-  const resumeStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    height: '73%',
-    border: 'solid #424548 1px',
-    position: 'aosbolute',
-    top: '10%',
-    marginLeft: '5%',
-  }
-  
-  const resumeInfoBox = {
-    display: 'flex',
-    textAlign: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '90%',
-    width: '68%',
-    left: '30%',
-    lineHeight: '30px',
-    border: 'solid #424548 1px',
-    borderRight: 'none',
-    position: 'absolute',
-    color: '#91690d',
-    fontFamily: 'Open Sans Condensed',
-    fontSize: '1.3rem'
-  }
-  
-  const resOptionsStyle = {
-    height: '90%',
-    width: '30%',
-    border: 'solid #424548 1px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    color: '#424548',
-    lineHeight: '1.5em',
-    fontFamily: 'Open Sans Condensed',
-    letterSpacing: '2px',
-    color: '#91690d',
-    fontSize: '1.3rem',
-    zIndex: '100'
-  
-  }
-  
-  const pdfDownloadBoxStyle = {
-    display: 'flex',
-    flex: '2',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    height: '17%',
-    width: '100%',
-    verticalAlign: 'middle'
-  }
-  
-  const itemStyle = {
-  }    
 
-  // render() {
+  const ResumeBox = styled.div`
+    display: flex;
+    height: 100%;
+    position: absolute;
+    overflow-x: hidden;
+    left: 5%;
+    width: 70%;
+    border: 1px solid #424548;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 1000;
+    @media (max-width: 600px) {
+      border-top: 1px solid #424548;
+      height: 450px;
+      width: 90%;
+      top: 20px;
+      left: 8%;
+    }
+  `
+
+  const ResumeInfoBox = styled.h1`
+    display: flex;
+    position: relative;
+    left: 10%;
+    width: 60%;
+    justify-content: center;
+    font-size: 1.25em;
+    font-family: "Raleway";
+    line-height: 30px;
+    font-weight: "bold";
+    color: #939597;
+    @media (max-width: 600px) {
+      display: block;
+      height: 284px;
+      width: 90%;
+      top: 50px;
+      left: 2%;
+      text-align: center;
+    }
+  `
+
+  const PdfDownloadBox = styled.div`
+    display: flex;
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    border: 1px solid #939597;
+    font-family: 'Raleway';
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #939597;
+    top: 90%;
+    @media (max-width: 600px) {
+      display: flex;
+      height: 50px;
+      align-items: center;
+      width: 100%;
+      text-align: center;
+      top: 88%;
+    }
+  `
+  const ResumeOptionsBox = styled.div`
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    align-items: center;
+    height: 317px;
+    left: 7%;
+    font-size: 1.5em;
+    font-family: "Raleway";
+    font-weight: bold;
+    top: 77px;
+    color: #939597;
+  @media (max-width: 600px) {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    justify-content: space-around;
+    color: #939597;
+    border: 1px solid #424548;
+    height: 30px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    font-size: 1em;
+  }
+`
+
     return (
-      <div id='resumeBox' style={{resumeStyle, "width": width/4*2.5}}>
-        <p id='resumeInfoBox' style={resumeInfoBox}>Choose an Option on the Left</p>
-        <div id="resOptionsBox" style={resOptionsStyle}>
+      <ResumeBox>
+        <ResumeInfoBox>{infoArr[visible]}</ResumeInfoBox>
+        <ResumeOptionsBox>
           <p id="profileLink" onMouseOver={hoverPointer} onClick={() => setVisible(0)}>Profile</p>
           <p id="skillsLink" onMouseOver={hoverPointer}  onClick={() => setVisible(1)}>Skills</p>
           <p id="experienceLink" onMouseOver={hoverPointer}  onClick={() => setVisible(2)}>Experience</p>
           <p id="educationLink" onMouseOver={hoverPointer}  onClick={() => setVisible(3)}>Education</p>
-        </div>
-        <div id="pdfDownloadBox" style={pdfDownloadBoxStyle}>
+        </ResumeOptionsBox>
+        <PdfDownloadBox>
           <p>Resume PDF:</p>
           <p 
             onClick={() => getPDF()}>View
@@ -185,8 +210,8 @@ export const Resume = () => {
           <a id="downloadLink"
             onClick={() => downloadFile()}>Download
           </a>
-        </div>
-      </div>
+        </PdfDownloadBox>
+      </ResumeBox>
     )
   }
 //}

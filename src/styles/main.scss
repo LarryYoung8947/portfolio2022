@@ -4,10 +4,121 @@
   overflow-y: hidden;
 }
 
-body {
-  background-color: #24292d;
+#name {
+  margin: 5px;
+}
+
+.project-tile {
+  display: flex;
+  border: ridge 1px rgba(83, 77, 77, 0.377);
+  border-radius: 10%;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  align-items: center;
+  text-align: center;
+  margin: 8px;
+  
+}
+
+.project-tile-img {
+  filter: grayscale(0.5)
+}
+
+.project-tile.isFlipped {
+  justify-content: space-around;
+}
+body {  
   height: 100vh;
   width: 100vw;
+  background-color: #24292d;
+}
+
+#welcomeSection {
+  display: none;
+  position: absolute;
+  height: 200px;
+  margin-left: 26%;
+  top: 38%;
+  color: #939597;
+  font-family: "Raleway";
+  font-size: 2.5em;
+  opacity: 0;
+  transition: opacity 1.5s;
+}
+
+#animationBox {
+  display: none;
+  position: relative;
+  height: 400px;
+  width: 400px;
+  left: 10%;
+  top: 20%;
+  opacity: 0;
+  transition: opacity 5s, bottom 3s, right 3s;
+  z-index: -500;
+  animation: spin 100s infinite linear;
+  transform-origin: center;
+  scale: 1.2;
+}
+
+#artBoard {
+  position: relative;
+  bottom: 40%;
+  height: 55%;
+  width: 100%;
+  display: none;
+}
+
+#vertNav {
+  position: absolute;
+  right: 0;
+  margin-right: 10%;
+  bottom: 30%;
+  display: none;
+  opacity: 0;
+  flex-direction: column;
+  height: 40vh;
+  width: 20%;
+  justify-content: space-between;
+  vertical-align: center;
+  text-align: center;
+  color: #939597;
+  font-family: "Raleway";
+  font-size: 1em; 
+  transition: opacity 2s
+}
+
+#resume-container {
+  display: none;
+  opacity: 0;
+  height: 528px;
+  width: 94%;
+  position: absolute;
+  top: 55px;
+  transition: opacity 2s;
+}
+
+
+#portfolioTitle {
+  font-family: "Raleway";
+  text-align: center;
+  color: #939597;
+  position: relative;
+  height: 40px;
+  top: 16%;
+  width: 50%;
+  position: absolute;
+  letter-spacing: 10px;
+  font-weight: 400;
+}
+
+#resume {
+  transition: opacity 2s;
+}
+
+#pdfMenuBar {
+  display: none;
 }
 
 .fadeIn_fadeOut {
@@ -15,13 +126,12 @@ body {
 }
 
 //STYLES FOR SCREENS LESS THAN 600PX
-
 @media screen and (max-width: 600px) {
 
   //NAVIGATION BAR
   
   #navbar {
-    background-color: #424548;
+    background-color: #939597;
     width: 100vw;
     display: flex;
     height: 15%;
@@ -30,7 +140,7 @@ body {
     justify-content: space-around;
     font-size: 1.2rem;
     flex-direction: row;
-    font-family: "Open Sans Condensed";
+    font-family: "Raleway";
     font-weight: 600;
     opacity: 0.6;
     z-index: 5000;
@@ -42,52 +152,55 @@ body {
     vertical-align: middle;
     text-decoration: none;
     letter-spacing: 4px;
-    color: #91690d;
+    color: black;
     text-shadow: 3px 2px 30px #0D0D0D;
     z-index: 500;
   }
 
   #navbar p:hover{
     font-size: 1.35em;
+    cursor: pointer;
   }
 
   //WELCOME SECTION
 
   #welcomeSection {
-    display: flex;
+    display: none;
     height: 100%;
+    width: 100%;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    opacity: 1;
+    opacity: 0;
+    margin-left: 0;
     transition: opacity 1s;
     z-index: -4999;
   }
 
   .introTitle {
-    font-family: 'Open Sans Condensed', sans-serif;
-    color: #91690d;
-    font-size: 2em;
+    font-family: "Raleway", sans-serif;
+    color: #757677;
+    font-size: 1em;
     letter-spacing: 10px;
     line-height: 70px;
     font-weight: 700;
+    text-align: center;
   }
 
   //ANIMATION BOX
 
   #animationBox {
     position: relative;
-    display: flex;
-    bottom: 526px;
-    opacity: 1;
+    display: none;
+    opacity: 0;
     z-index: -5000;
-    height: 400px;
-    width: 100vw;
-    align-items: center;
-    transition: opacity 5s, bottom 3s, right 3s;
-    animation: spin 100s infinite linear;
-    transform-origin: center;
-    scale: 0.6;
+    height: 60%;
+    width: 400px;
+    transition: opacity 5s;
+    text-align: center;
+    animation: spin 100s infinite;
+    scale: 0.7;
+    top: 150px;
   }
 
   #artBoard {
@@ -96,9 +209,20 @@ body {
     opacity: 0.5;
     bottom: 146px;
     height: 400px;
-    width: 80%;
+    width: 100%;
     right: 10%;
   }
+
+  #resume-container {
+    display: none;
+    opacity: 0;
+    height: 471px;
+    width: 94%;
+    position: absolute;
+    top: 107px;
+    transition: opacity 2s;
+  }
+  
 
   //PROJECT SECTION
 
@@ -112,13 +236,13 @@ body {
     opacity: 0;
     flex-direction: row;
     justify-content: center;
-    transition: opacity 1s;
+    transition: opacity 2s;
   }
 
   #portfolioTitle {
-    font-family: "Open Sans Condensed";
+    font-family: "Raleway";
     text-align: center;
-    color: #91690d;
+    color: #939597;
     position: relative;
     height: 40px;
     top: 16%;
@@ -144,7 +268,7 @@ body {
   }
 
   .project-tile {
-    border: solid 1px #424548;
+    border: solid 1px #939597;
     border-radius: 10%;
     box-sizing: border-box;
     overflow-y: hidden;
@@ -157,11 +281,11 @@ body {
   }
 
   .project-tile p {
-    font-family: 'Open Sans Condensed';
+    font-family: "Raleway";
     font-size: 1em;
-    color:#91690d;
+    color:#939597;
     letter-spacing: 5px;
-    position: relative;
+    position: absolute;
     bottom: 20px;
     font-weight: 600;
   }
@@ -197,17 +321,19 @@ body {
 
   #projectTitle {
     width: 100%;
-    height: 41px;
+    height: 100px;
     position: absolute;
-    top: 448px;
+    top: 440px;
     opacity: 1;
-    font-size: 1.5rem;
+    font-size: 1rem;
+    font-weight: bolder;
     justify-content: center;
     align-items: center;
-    font-family: "Open Sans Condensed";
-    color: #91690d;
+    font-family: "Raleway";
+    color: #939597;
     display: flex;
     letter-spacing: 5px;
+    text-align: center;
   }
 
   #iconContainer {
@@ -215,6 +341,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     width: 100%;
     height: 100px;
     top: 520px;
@@ -229,57 +356,26 @@ body {
 
   .flipBtn:hover {
     cursor: pointer;
+    color: #939597;
   }
 
   i.flipBtn {
-    color: #424548;
-  }
-
-  i.flipBtn:hover {
-    color: #91690d;
-    cursor: pointer;
-  }
-
-  #resume-container {
-    display: flex;
-    width: 100%;
-    opacity: 1;
-  }
-
-  #resume {
-    display: none;
-    position: absolute;
-    opacity: 0;
-    height: 100%;
-    width: 100%;
-    overflow-y: scroll;
-    transition: opacity 1s;
-  }
-
-  .resTitle {
-    position: absolute;
-    width: 60px;
-    height: 80px;
-    z-index: 5;
-  }  
-
-  .resumeArrow {
-    bottom: -10px;
+    color: #939597;
   }
 
   #pdfDownloadBox p {
     display: flex;
-    font-family: 'Open Sans Condensed';
+    font-family: "Raleway";
     align-items: center;
     font-size: 1.3rem;
     letter-spacing: 2px;
-    color: #91690d;
+    color: #939597;
   }  
 
   #pdfViewport {
     display: none;
     height: 73%;
-    border: solid #424548 1px;
+    border: solid #939597 1px;
     position: absolute;
     top: 10%;
     width: 60%;
@@ -300,10 +396,10 @@ body {
     position: absolute;
     height: 175px;
     width: 175px;
-    border: solid #424548 1px;
+    border: solid #939597 1px;
     border-radius: 100%;
-    font-family: 'Open Sans Condensed';
-    color: #91690d;
+    font-family: "Raleway";
+    color: #939597;
     text-align: center;
   }
 
@@ -312,8 +408,8 @@ body {
     height: 68px;
     width: 100%;
     font-size: 2em;
-    font-family: "Open Sans Condensed";
-    color: #91690d;
+    font-family: "Raleway";
+    color: #939597;
     justify-items: center;
     text-align: center;
     top: 19%;
@@ -367,13 +463,23 @@ body {
     height: 10px;
     width: 10px;
     position: absolute;
-    border-color: #91690d;
+    border-color: #939597;
   }
 }
 
 //STYLES FOR SCREENS LESS THAN 860
 
 @media screen and (min-width: 601px) and (max-width: 860px) {
+
+  .introTitle {
+    font-family: "Raleway", sans-serif;
+    color: #939597;
+    height: 50%;
+    width: 100%;
+    font-size: 1em;
+    font-weight: 700;
+    margin: 5px;
+  }
 
   #navbar {
     display: none;
@@ -390,7 +496,7 @@ body {
 
   #project-container {
     position: absolute;
-    top: 155px;
+    top: 125px;
     display: grid;
     width: 70%;
     margin-left: 10%;
@@ -404,6 +510,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
   height: 100px;
   top: 520px;
@@ -411,9 +518,9 @@ body {
 }
 
 #portfolioTitle {
-  font-family: "Open Sans Condensed";
+  font-family: "Raleway";
   text-align: center;
-  color: #91690d;
+  color: #939597;
   position: relative;
   height: 40px;
   top: 16%;
@@ -426,8 +533,8 @@ body {
 
 #projectTitle {
   position: absolute;
-  font-family: "Open Sans Condensed";
-  color: #91690d;
+  font-family: "Raleway";
+  color: #939597;
   width: 100%;
   height: 30px;
   bottom: 21%;
@@ -435,10 +542,11 @@ body {
 }
 
 .project-tile {
-  border: solid 1px #424548;
+  border: solid 1px #939597;
   border-radius: 10%;
   box-sizing: border-box;
   overflow-y: hidden;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -448,11 +556,11 @@ body {
 }
 
 .project-tile p {
-  font-family: 'Open Sans Condensed';
+  font-family: "Raleway";
   font-size: 1em;
-  color:#91690d;
-  letter-spacing: 5px;
-  position: relative;
+  color:#939597;
+  position: absolute;
+  text-align: center;
   bottom: 20px;
   font-weight: 600;
 }
@@ -479,55 +587,30 @@ body {
 .flipBtn {
     font-size: 2em;
     text-decoration: none;
-    color:#424548;
+    color:#939597;
   }
 
 .flipBtn:hover {
-    color:#91690d;
+    color:#939597;
     cursor: pointer;
     }
 
-    #resume-container {
-      display: flex;
-      width: 100%;
-      opacity: 1;
-    }
-
-    #resume {
-      display: none;
-      position: absolute;
-      opacity: 0;
-      height: 100%;
-      bottom: 0;
-      width: 100%;
-      overflow-x: hidden;
-      transition: opacity 1s;
-    }
-
-    .resTitle {
-      position: absolute;
-      width: 60px;
-      height: 80px;
-      z-index: 5;
-    }  
+   
   
-    .resumeArrow {
-      bottom: -10px;
-    }
-  
+    
     #pdfDownloadBox p {
       display: flex;
-      font-family: 'Open Sans Condensed';
+      font-family: "Raleway";
       align-items: center;
       font-size: 1.3rem;
       letter-spacing: 2px;
-      color: #91690d;
+      color: #939597;
     }  
 
     #pdfViewport {
       display: none;
     height: 73%;
-    border: solid #424548 1px;
+    border: solid #939597 1px;
     position: absolute;
     top: 10%;
     width: 60%;
@@ -549,10 +632,10 @@ body {
       position: absolute;
       height: 175px;
       width: 175px;
-      border: solid #424548 1px;
+      border: solid #939597 1px;
       border-radius: 100%;
-      font-family: 'Open Sans Condensed';
-      color: #91690d;
+      font-family: "Raleway";
+      color: #939597;
       text-align: center;
     }
   
@@ -561,8 +644,8 @@ body {
       height: 68px;
       width: 100%;
       font-size: 2em;
-      font-family: "Open Sans Condensed";
-      color: #91690d;
+      font-family: "Raleway";
+      color: #939597;
       justify-items: center;
       text-align: center;
       top: 19%;
@@ -616,13 +699,13 @@ body {
       height: 10px;
       width: 10px;
       position: absolute;
-      border-color: #91690d;
+      border-color: #939597;
     }
 
 
     #vertNav {
       position: absolute;
-      right: 10px;
+      left: 80%;
       bottom: 30%;
       display: flex;
       flex-direction: column;
@@ -631,8 +714,8 @@ body {
       justify-content: space-between;
       vertical-align: center;
       text-align: center;
-      color: #91690d;
-      font-family: "Open Sans Condensed";
+      color: #939597;
+      font-family: "Raleway";
       font-size: 1em; 
     }
   
@@ -651,16 +734,16 @@ body {
     }
 
   #animationBox {
-    position: relative;
+    position: absolute;
     height: 400px;
     width: 400px;
-    margin-left: 10%;
-    top: 20%;
+    top: 15%;
+    margin-left: -10%;
     transition: opacity 5s, bottom 3s, right 3s;
     z-index: -500;
     animation: spin 100s infinite linear;
     transform-origin: center;
-    scale: 1.2;
+    scale: 0.9;
   }
 
   #artBoard {
@@ -677,8 +760,8 @@ body {
     width: 300px;
     top: 30%;
     left: 10%;
-    color:#91690d;
-    font-family: 'Open Sans Condensed';
+    color:#939597;
+    font-family: "Raleway";
     font-size: 2.5em;
     opacity: 1;
     transition: opacity 1s;
@@ -701,8 +784,8 @@ body {
     justify-content: space-between;
     vertical-align: center;
     text-align: center;
-    color: #91690d;
-    font-family: "Open Sans Condensed";
+    color: #939597;
+    font-family: "Raleway";
     font-size: 1em; 
   }
 
@@ -732,51 +815,42 @@ body {
 
   #project-container {
     position: absolute;
-    top: 135px;
+    top: 95px;
     display: grid;
     width: 50%;
     margin-left: 15%;
-    height: 375px;
+    height: 400px;
     grid-template-columns: 33fr 33fr 33fr;
     grid-template-rows: 50fr 50fr;
-}
-
-
-
-
-
-  .project-tile {
-    border: solid 1px #424548;
-    border-radius: 10%;
-    box-sizing: border-box;
-    overflow-y: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    transition: transform 1s;
-    transform-style: preserve-3d;
-    transform-origin: center;
-  }
+    color: grayscale($color: gray);
+} 
 
   #projectTitle {
     position: absolute;
-    font-family: "Open Sans Condensed";
-    color: #91690d;
+    font-family: "Raleway";
+    font-size: 1.5em;
+    color: #939597;
+    font-weight: bold;
     width: 100%;
     height: 30px;
-    bottom: 16%;
+    bottom: 20%;
     margin-left: -9%;
+    
     text-align: center;
+  }
+
+  #projectTitle p {
+    border: 1px solid gray;
   }
 
 
   #portfolioTitle {
-    color:#91690d;
+    color:#939597;
     width: 100%;
     text-align: center;
     position: absolute;
     top: 10%;
-    font-family: 'Open Sans Condensed';
+    font-family: "Raleway";
     font-size: 2em;
     margin-left: -10%;
   }
@@ -788,28 +862,28 @@ body {
     height: 60px;
     width: 80%;
     position: absolute;
+    align-items: center;
     bottom: 5%;
   }
 
   .flipBtn {
     font-size: 2em;
     text-decoration: none;
-    color:#424548;
+    color:#939597;
   }
 
   .flipBtn:hover {
-    color:#91690d;
+    color:#939597;
     cursor: pointer;
   }
 
+  
+
   .project-tile p {
-    font-family: 'Open Sans Condensed';
+    font-family: "Raleway";
     font-size: 1em;
-    color:#91690d;
-    letter-spacing: 5px;
-    position: relative;
-    bottom: 20px;
-    font-weight: 600;
+    color:#939597;
+    position: absolute;
   }
   
   .project-tile:hover {
@@ -818,41 +892,25 @@ body {
   
   .project-tile.isFlipped {
     animation: flip 750ms linear;
+    transition: opacity 2s;
+  }
+
+  .project-tile.isClicked {
+    position: absolute;
+    left: 1%;
+    animation: 400ms grow linear;
+    width: 300px;
+    height: 300px;
+    z-index: 10000;
+    opacity: 1;
   }
   
   .project-tile-img {
     opacity: 0;
-    height: 200px;
+    height: 100%;
     width: 100%;
-    transition: opacity 1s;
-  }
-
-  #resume-container {
-    display: flex;
-    width: 100%;
-    opacity: 1;
-    margin-left: 5%;
-  }
-
-  #resumeBox {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 73%;
-    border: solid #424548 1px;
-    position: relative;
-    top: 10%;
-    width: 75%;
-    margin-left: 5%;
-  }
-
-  #resume {
-    display: none;
-    position: absolute;
-    opacity: 0;
-    bottom: 0;
-    overflow-x: hidden;
-    transition: opacity 1s;
+    color: grayscale($color: gray);
+    
   }
 
   #pdfMenuBar {
@@ -868,12 +926,12 @@ body {
     position: fixed;
     height: 65px;
     width: 125px;
-    background-color:#424548;
+    background-color:#939597;
     z-index: 2000;
     opacity: 0.5;
-    color:#91690d;
+    color:#939597;
     font-size: 1.5em;
-    font-family: 'Open Sans Condensed';
+    font-family: "Raleway";
     top: 5px;
     left: 5px;
   }
@@ -883,10 +941,10 @@ body {
     height: 65px;
     width: 125px;
     right: 15px;
-    background-color: #424548;
+    background-color: #939597;
     z-index: 2000;
     opacity: 0.5;
-    color:#91690d;
+    color:#939597;
     font-size: 1.5em;
     top: 5px;
     right: 5px;
@@ -900,9 +958,9 @@ body {
     background-color: #24292d;
     z-index: 2000;
     opacity: 0;
-    color:#91690d;
+    color:#939597;
     top: 529px;
-    font-family: 'Open Sans Condensed';
+    font-family: "Raleway";
     font-size: 1.7em;
     letter-spacing: 3px;
     right: 43px;
@@ -916,49 +974,19 @@ body {
     top: 50px;
   }
 
-  .resTitle {
-    position: absolute;
-    width: 60px;
-    height: 80px;
-    z-index: 5;
-  }  
-
-  .resumeArrow {
-    bottom: -10px;
-  }
-
-  .resTitle {
-    position: absolute;
-    width: 60px;
-    height: 80px;
-    z-index: 5;
-  }  
-
-  .resumeArrow {
-    bottom: -10px;
-  }
-
+ 
   #pdfDownloadBox p {
     display: flex;
-    font-family: 'Open Sans Condensed';
+    font-family: "Raleway";
     align-items: center;
     font-size: 1.3rem;
     letter-spacing: 2px;
-    color: #91690d;
-  } 
-
-  #pdfDownloadBox a {
-    display: flex;
-    font-family: 'Open Sans Condensed';
-    align-items: center;
-    font-size: 1.3rem;
-    letter-spacing: 2px;
-    color: #91690d;
+    color: #939597;
   } 
 
   #pdfViewport {
   display: none;
-  border: solid #424548 1px;
+  border: 1px solid #424548;
   position: absolute;
   background-color: #24292d;
   z-index: 1000;
@@ -981,27 +1009,26 @@ body {
     position: absolute;
     height: 175px;
     width: 175px;
-    border: solid #4b4942 1px;
+    border: 1px solid #424548;
     border-radius: 100%;
-    font-family: 'Open Sans Condensed';
+    font-family: "Raleway";
     font-weight: bold;
-    color: #91690d;
+    color: #939597;
     text-align: center;
     scale: 1.35;
   }
 
   #contactName {
     position: absolute;
-    height: 68px;
+    height: 100;
     width: 540px;
-    font-size: 2em;
-    font-family: "Open Sans Condensed";
+    font-size: 3.5em;
+    font-family: "Raleway";
     font-weight: bold;
-    color: #91690d;
+    color: #939597;
     justify-items: center;
-    text-align: right;
     top: 25%;
-    letter-spacing: 8px;
+    left: 30%
   }
 
   #b1 p {
@@ -1051,60 +1078,29 @@ body {
     height: 10px;
     width: 10px;
     position: absolute;
-    border-color: #91690d;
+    border-color: #939597;
   }
-
 
   #vertNav {
     position: absolute;
     right: 0;
     margin-right: 10%;
     bottom: 30%;
-    display: flex;
+    display: none;
+    opacity: 0;
     flex-direction: column;
     height: 40vh;
     width: 20%;
     justify-content: space-between;
     vertical-align: center;
     text-align: center;
-    color: #91690d;
-    font-family: "Open Sans Condensed";
+    color: #939597;
+    font-family: "Raleway";
     font-size: 1em; 
+    transition: opacity 2s
   }
 
-  #animationBox {
-    position: relative;
-    height: 400px;
-    width: 400px;
-    left: 5%;
-    top: 11%;
-    transition: opacity 5s, bottom 3s, right 3s;
-    z-index: -500;
-    animation: spin 100s infinite linear;
-    transform-origin: center;
-    scale: 1.2;
-  }
-
-  #artBoard {
-    position: relative;
-    bottom: 40%;
-    height: 55%;
-    width: 100%;
-    display: none;
-  }
-
-  #welcomeSection {
-    position: absolute;
-    height: 200px;
-    width: 65%;
-    margin-left: 26%;
-    top: 38%;
-    color: #91690d;
-    font-family: "Open Sans Condensed";
-    font-size: 2.5em;
-    opacity: 1;
-    transition: opacity 1s;
-  }
+  
 }
 
 @keyframes spin {
@@ -1116,4 +1112,10 @@ body {
   0% { transform: rotateY(0deg) }
   50% { transform: rotateY(540deg) }
   100% { transform: rotateY(720deg) }
+}
+
+@keyframes grow {
+  0% { width: 0px; height: 1px;}
+  75% {width: 300px; height: 5px}
+  100% { width: 300px;  height: 300px; }
 }
